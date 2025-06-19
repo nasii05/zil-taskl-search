@@ -1,0 +1,38 @@
+<div class="w-full h-screen bg-white flex items-center justify-center">
+  <table class="w-[80%] border-2 mt-28">
+    <thead>
+      <tr>
+        <th class="px-6 py-3">Name</th>
+        <th class="px-6 py-3">Company Name</th>
+        <th class="px-6 py-3">Designation</th>
+      </tr>
+      <tr>
+        <th class="px-6 py-3">
+          <input [(ngModel)]="searchText" placeholder="Search" class="w-full h-full p-3 text-gray-400" />
+        </th>
+        <th class="px-6 py-3">
+          <input [(ngModel)]="searchText" placeholder="Search" class="w-full h-full p-3 text-gray-400" />
+        </th>
+        <th class="px-6 py-3">
+          <input [(ngModel)]="searchText" placeholder="Search" class="w-full h-full p-3 text-gray-400" />
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of userData | search:searchText">
+        <td class="px-6 py-3 flex flex-col gap-2"
+            [ngClass]="{'bg-green-200' : user.company?.designation?.toLowerCase() === 'angular developer'}">
+          {{ user.name }}<br />{{ user.email }}
+        </td>
+        <td class="px-6 py-3"
+            [ngClass]="{'bg-green-200' : user.company?.designation?.toLowerCase() === 'angular developer'}">
+          {{ user.company?.name }}
+        </td>
+        <td class="px-6 py-3"
+            [ngClass]="{'bg-green-200' : user.company?.designation?.toLowerCase() === 'angular developer'}">
+          {{ user.company?.designation }}
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
