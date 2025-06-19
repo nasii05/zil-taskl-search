@@ -15,12 +15,6 @@ export class SearchTableComponent implements OnInit{
 
   searchText = '';
 
-  search = {
-    name: '',
-    'company.name': '',
-    'company.designation': ''
-  };
-
   constructor(private apiService: ApiService){}
 
   ngOnInit(): void {
