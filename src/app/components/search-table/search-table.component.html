@@ -1,5 +1,5 @@
-<div class="w-full h-screen bg-white flex items-center justify-center">
-  <table class="w-[80%] border-2 mt-28">
+<div class="w-full h-auto bg-white flex items-center justify-center py-10">
+  <table class="w-[80%] border-2">
     <thead>
       <tr>
         <th class="px-6 py-3">Name</th>
@@ -19,7 +19,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let user of userData | search:searchText">
+      <tr class="border-b-2 border-b-gray-500" *ngFor="let user of userData | search:searchText">
         <td class="px-6 py-3 flex flex-col gap-2"
             [ngClass]="{'bg-green-200' : user.company?.designation?.toLowerCase() === 'angular developer'}">
           {{ user.name }}<br />{{ user.email }}
