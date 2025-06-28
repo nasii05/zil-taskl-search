@@ -8,30 +8,31 @@
       </tr>
       <tr>
         <th class="px-6 py-3">
-          <input [(ngModel)]="searchText" placeholder="Search" class="w-full h-full p-3 text-gray-400" />
+          <input [(ngModel)]="fields.name" (ngModelChange)="updateFilters()" placeholder="Search name/email"
+                 class="w-full h-full p-3 text-gray-400" />
         </th>
         <th class="px-6 py-3">
-          <input [(ngModel)]="searchText" placeholder="Search" class="w-full h-full p-3 text-gray-400" />
+          <input [(ngModel)]="fields.companyName" (ngModelChange)="updateFilters()" placeholder="Search company"
+                 class="w-full h-full p-3 text-gray-400" />
         </th>
         <th class="px-6 py-3">
-          <input [(ngModel)]="searchText" placeholder="Search" class="w-full h-full p-3 text-gray-400" />
+          <input [(ngModel)]="fields.designation" (ngModelChange)="updateFilters()" placeholder="Search designation"
+                 class="w-full h-full p-3 text-gray-400" />
         </th>
       </tr>
     </thead>
+
     <tbody>
-      <tr class="border-b-2 border-b-gray-500" *ngFor="let user of userData | search:searchText">
-        <td class="px-6 py-3 flex flex-col gap-2"
-            [ngClass]="{'bg-green-200' : user.company?.designation?.toLowerCase() === 'angular developer'}">
+      <tr
+        *ngFor="let user of userData | search: filter"
+        class="border-b-2 border-b-gray-500"
+        [ngClass]="{'bg-green-200': user.company?.designation?.toLowerCase() === 'angular developer'}"
+      >
+        <td class="px-6 py-3 flex flex-col gap-2">
           {{ user.name }}<br />{{ user.email }}
         </td>
-        <td class="px-6 py-3"
-            [ngClass]="{'bg-green-200' : user.company?.designation?.toLowerCase() === 'angular developer'}">
-          {{ user.company?.name }}
-        </td>
-        <td class="px-6 py-3"
-            [ngClass]="{'bg-green-200' : user.company?.designation?.toLowerCase() === 'angular developer'}">
-          {{ user.company?.designation }}
-        </td>
+        <td class="px-6 py-3">{{ user.company?.name }}</td>
+        <td class="px-6 py-3">{{ user.company?.designation }}</td>
       </tr>
     </tbody>
   </table>
